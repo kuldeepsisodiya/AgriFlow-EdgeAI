@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 820" width="100%" height="100%" style="background:#0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="seq-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+    <marker id="seq-arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981" />
+    </marker>
+    <marker id="seq-arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444" />
+    </marker>
+    <marker id="seq-arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a855f7" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: SYSTEM SEQUENCE DIAGRAM</text>
+  <text x="550" y="65" text-anchor="middle" font-size="12" fill="#94a3b8">Interactive Telemetry, Edge Autonomous Decision Engine, and Cloud Actuation Lifecycle</text>
+
+  <!-- ================= PARTICIPANTS HEADERS ================= -->
+  <!-- 1. Physical Sensors -->
+  <g transform="translate(40, 95)">
+    <rect width="140" height="45" rx="8" fill="url(#headerGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <text x="70" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">Physical Sensors</text>
+  </g>
+  <line x1="110" y1="140" x2="110" y2="760" stroke="#334155" stroke-dasharray="4,4"/>
+
+  <!-- 2. SensorManager -->
+  <g transform="translate(220, 95)">
+    <rect width="140" height="45" rx="8" fill="url(#headerGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="70" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#38bdf8">SensorManager</text>
+  </g>
+  <line x1="290" y1="140" x2="290" y2="760" stroke="#334155" stroke-dasharray="4,4"/>
+
+  <!-- 3. DecisionEngine -->
+  <g transform="translate(400, 95)">
+    <rect width="140" height="45" rx="8" fill="url(#headerGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="70" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#fbbf24">DecisionEngine</text>
+  </g>
+  <line x1="470" y1="140" x2="470" y2="760" stroke="#334155" stroke-dasharray="4,4"/>
+
+  <!-- 4. PumpController & Relay -->
+  <g transform="translate(580, 95)">
+    <rect width="150" height="45" rx="8" fill="url(#headerGrad)" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="75" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#f87171">PumpController / Relay</text>
+  </g>
+  <line x1="655" y1="140" x2="655" y2="760" stroke="#334155" stroke-dasharray="4,4"/>
+
+  <!-- 5. Blynk IoT Cloud -->
+  <g transform="translate(770, 95)">
+    <rect width="140" height="45" rx="8" fill="url(#headerGrad)" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="70" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#c084fc">Blynk Cloud 2.0</text>
+  </g>
+  <line x1="840" y1="140" x2="840" y2="760" stroke="#334155" stroke-dasharray="4,4"/>
+
+  <!-- 6. User Mobile App -->
+  <g transform="translate(940, 95)">
+    <rect width="120" height="45" rx="8" fill="url(#headerGrad)" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="60" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#22d3ee">User App</text>
+  </g>
+  <line x1="1000" y1="140" x2="1000" y2="760" stroke="#334155" stroke-dasharray="4,4"/>
+
+  <!-- ================= SCENARIO 1: AUTO IRRIGATION CYCLE ================= -->
+  <rect x="50" y="160" width="1000" height="30" rx="6" fill="#1e293b" opacity="0.8"/>
+  <text x="70" y="180" font-size="12" font-weight="700" fill="#10b981">SCENARIO 1: Autonomous Soil Deficit Detection &amp; Safe Irrigation Cycle</text>
+
+  <!-- Step 1: Analog Read -->
+  <line x1="110" y1="210" x2="290" y2="210" stroke="#10b981" stroke-width="1.8" marker-end="url(#seq-arrow-green)"/>
+  <text x="200" y="202" text-anchor="middle" font-size="11" fill="#cbd5e1">1. Raw ADC (Soil=3120, Tank=2400)</text>
+
+  <!-- Step 2: Signal Filtering -->
+  <rect x="280" y="225" width="20" height="40" rx="4" fill="#0284c7"/>
+  <text x="310" y="245" font-size="10" fill="#38bdf8">10-Sample Moving Avg Filter</text>
+
+  <!-- Step 3: Send Filtered Telemetry -->
+  <line x1="290" y1="280" x2="470" y2="280" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#seq-arrow)"/>
+  <text x="380" y="272" text-anchor="middle" font-size="11" fill="#cbd5e1">2. Dispatched: Soil=28% (Dry), Tank=80%</text>
+
+  <!-- Step 4: Decision Engine Evaluate -->
+  <rect x="460" y="295" width="20" height="50" rx="4" fill="#d97706"/>
+  <text x="490" y="315" font-size="10" fill="#fbbf24">Evaluate: Soil &lt; 35% &amp;&amp; Tank &gt; 20%</text>
+  <text x="490" y="332" font-size="10" fill="#fbbf24">Result: Target Pump State = ON</text>
+
+  <!-- Step 5: Command Pump -->
+  <line x1="470" y1="360" x2="655" y2="360" stroke="#ef4444" stroke-width="2" marker-end="url(#seq-arrow-red)"/>
+  <text x="560" y="352" text-anchor="middle" font-size="11" fill="#fca5a5">3. setPumpState(PUMP_ON)</text>
+
+  <!-- Step 6: Relay Actuation & Watchdog -->
+  <rect x="645" y="375" width="20" height="45" rx="4" fill="#b91c1c"/>
+  <text x="675" y="392" font-size="10" fill="#f87171">Set GPIO5 LOW (Relay Energized)</text>
+  <text x="675" y="408" font-size="10" fill="#f87171">Start Max Runtime Watchdog (300s)</text>
+
+  <!-- Step 7: Push State to Blynk -->
+  <line x1="655" y1="435" x2="840" y2="435" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#seq-arrow-purple)"/>
+  <text x="750" y="427" text-anchor="middle" font-size="11" fill="#c084fc">4. Sync Telemetry (V0=28%, V1=1, V2=80%)</text>
+
+  <!-- Step 8: Cloud to App UI -->
+  <line x1="840" y1="460" x2="1000" y2="460" stroke="#06b6d4" stroke-width="1.8" marker-end="url(#seq-arrow)"/>
+  <text x="920" y="452" text-anchor="middle" font-size="11" fill="#22d3ee">5. Push Update (Gauges Active)</text>
+
+  <!-- ================= SCENARIO 2: REMOTE EMERGENCY STOP ================= -->
+  <rect x="50" y="500" width="1000" height="30" rx="6" fill="#1e293b" opacity="0.8"/>
+  <text x="70" y="520" font-size="12" font-weight="700" fill="#ef4444">SCENARIO 2: Agronomist Remote Emergency Override (Manual Kill Switch)</text>
+
+  <!-- Step 1: User tap stop -->
+  <line x1="1000" y1="555" x2="840" y2="555" stroke="#ef4444" stroke-width="2" marker-end="url(#seq-arrow-red)"/>
+  <text x="920" y="547" text-anchor="middle" font-size="11" fill="#fca5a5">1. Tap Emergency Stop (V1 = 0)</text>
+
+  <!-- Step 2: Blynk Cloud push to ESP32 -->
+  <line x1="840" y1="585" x2="655" y2="585" stroke="#ef4444" stroke-width="2" marker-end="url(#seq-arrow-red)"/>
+  <text x="750" y="577" text-anchor="middle" font-size="11" fill="#fca5a5">2. BLYNK_WRITE(V1, 0) Interrupt Handler</text>
+
+  <!-- Step 3: Immediate hardware cutoff -->
+  <rect x="645" y="600" width="20" height="40" rx="4" fill="#b91c1c"/>
+  <text x="675" y="618" font-size="10" fill="#f87171">Set GPIO5 HIGH (Relay De-energized)</text>
+  <text x="675" y="632" font-size="10" fill="#f87171">Pump Disengaged Instantly</text>
+
+  <!-- Step 4: Notify Engine -->
+  <line x1="655" y1="655" x2="470" y2="655" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#seq-arrow)"/>
+  <text x="560" y="647" text-anchor="middle" font-size="11" fill="#cbd5e1">3. Force Mode = MANUAL_OFF</text>
+
+  <!-- Step 5: Cloud Ack -->
+  <line x1="655" y1="690" x2="840" y2="690" stroke="#8b5cf6" stroke-width="1.8" marker-end="url(#seq-arrow-purple)"/>
+  <text x="750" y="682" text-anchor="middle" font-size="11" fill="#c084fc">4. Acknowledge V1 = 0 (Safe Confirmed)</text>
+
+  <!-- Step 6: Confirmation Alert to App -->
+  <line x1="840" y1="725" x2="1000" y2="725" stroke="#10b981" stroke-width="1.8" marker-end="url(#seq-arrow-green)"/>
+  <text x="920" y="717" text-anchor="middle" font-size="11" fill="#34d399">5. In-App Notification: "Pump Halted Safely"</text>
+
+</svg>
