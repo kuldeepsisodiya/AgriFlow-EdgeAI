@@ -61,15 +61,15 @@ namespace Config {
 
     // ================= BLYNK VIRTUAL PIN MAP =================
     namespace VPin {
-        constexpr uint8_t SOIL_MOISTURE_PCT = V0;
-        constexpr uint8_t PUMP_STATE        = V1;
-        constexpr uint8_t WATER_LEVEL_PCT   = V2;
-        constexpr uint8_t TEMPERATURE_C     = V3;
-        constexpr uint8_t HUMIDITY_PCT      = V4;
-        constexpr uint8_t OPERATION_MODE    = V5; // 0 = AUTO, 1 = MANUAL
-        constexpr uint8_t STATUS_MESSAGE    = V6;
-        constexpr uint8_t SYSTEM_UPTIME     = V7;
-        constexpr uint8_t VPD_KPA           = V8;
+        constexpr uint8_t SOIL_MOISTURE_PCT = 0;
+        constexpr uint8_t PUMP_STATE        = 1;
+        constexpr uint8_t WATER_LEVEL_PCT   = 2;
+        constexpr uint8_t TEMPERATURE_C     = 3;
+        constexpr uint8_t HUMIDITY_PCT      = 4;
+        constexpr uint8_t OPERATION_MODE    = 5; // 0 = AUTO, 1 = MANUAL
+        constexpr uint8_t STATUS_MESSAGE    = 6;
+        constexpr uint8_t SYSTEM_UPTIME     = 7;
+        constexpr uint8_t VPD_KPA           = 8;
     }
 
 } // namespace Config

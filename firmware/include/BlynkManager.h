@@ -10,9 +10,9 @@
 #include <Arduino.h>
 #define BLYNK_PRINT Serial
 #include <WiFi.h>
+#include "Config.h"
 #include <BlynkSimpleEsp32.h>
 
-#include "Config.h"
 #include "SensorManager.h"
 #include "PumpController.h"
 #include "DecisionEngine.h"
