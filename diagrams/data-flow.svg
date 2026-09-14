@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%" style="background:#0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="dfCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="df-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: END-TO-END TELEMETRY DATA FLOW</text>
+  <text x="600" y="65" text-anchor="middle" font-size="12" fill="#94a3b8">Signal Conditioning Pipeline: From Raw Analog Transduction to Cloud Aggregation</text>
+
+  <!-- ================= STAGE 1: ANALOG TRANSDUCTION ================= -->
+  <g transform="translate(30, 100)">
+    <rect width="200" height="530" rx="14" fill="url(#dfCard)" stroke="#334155" stroke-width="1.5"/>
+    <rect width="200" height="38" rx="14" fill="#1e293b"/>
+    <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#38bdf8">1. Transduction</text>
+
+    <!-- Block 1: Soil -->
+    <g transform="translate(15, 60)">
+      <rect width="170" height="130" rx="8" fill="#111827" stroke="#10b981"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#34d399">Capacitive Probe</text>
+      <text x="12" y="42" font-size="10" fill="#cbd5e1">Dielectric permittivity</text>
+      <text x="12" y="58" font-size="10" fill="#cbd5e1">Output: 1.2V - 3.0V</text>
+      <line x1="12" y1="72" x2="158" y2="72" stroke="#334155"/>
+      <text x="12" y="92" font-size="9" fill="#94a3b8">Analog Voltage</text>
+      <text x="12" y="110" font-size="9" fill="#10b981">V_out ∝ 1/Moisture</text>
+    </g>
+
+    <!-- Block 2: Water Level -->
+    <g transform="translate(15, 210)">
+      <rect width="170" height="130" rx="8" fill="#111827" stroke="#3b82f6"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#60a5fa">Reservoir Sensor</text>
+      <text x="12" y="42" font-size="10" fill="#cbd5e1">Conductive immersion</text>
+      <text x="12" y="58" font-size="10" fill="#cbd5e1">Output: 0.0V - 2.8V</text>
+      <line x1="12" y1="72" x2="158" y2="72" stroke="#334155"/>
+      <text x="12" y="92" font-size="9" fill="#94a3b8">Variable Resistance</text>
+      <text x="12" y="110" font-size="9" fill="#38bdf8">V_out ∝ Depth</text>
+    </g>
+
+    <!-- Block 3: DHT22 -->
+    <g transform="translate(15, 360)">
+      <rect width="170" height="130" rx="8" fill="#111827" stroke="#f59e0b"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#fbbf24">DHT22 Digital</text>
+      <text x="12" y="42" font-size="10" fill="#cbd5e1">Polymer capacitor + NTC</text>
+      <text x="12" y="58" font-size="10" fill="#cbd5e1">1-Wire Serial Data</text>
+      <line x1="12" y1="72" x2="158" y2="72" stroke="#334155"/>
+      <text x="12" y="92" font-size="9" fill="#94a3b8">Digital Pulse Train</text>
+      <text x="12" y="110" font-size="9" fill="#fbbf24">40-Bit Checksum Packet</text>
+    </g>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 230 365 L 260 365" stroke="#38bdf8" stroke-width="2" marker-end="url(#df-arrow)"/>
+
+  <!-- ================= STAGE 2: SAMPLING & FILTERING ================= -->
+  <g transform="translate(260, 100)">
+    <rect width="210" height="530" rx="14" fill="url(#dfCard)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect width="210" height="38" rx="14" fill="#1e293b"/>
+    <text x="105" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#38bdf8">2. ADC &amp; Digital Filter</text>
+
+    <g transform="translate(15, 60)">
+      <rect width="180" height="140" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#e2e8f0">12-bit SAR ADC</text>
+      <text x="12" y="42" font-size="10" fill="#cbd5e1">• ADC1_CH7 (GPIO35)</text>
+      <text x="12" y="58" font-size="10" fill="#cbd5e1">• ADC1_CH6 (GPIO34)</text>
+      <text x="12" y="74" font-size="10" fill="#cbd5e1">• Resolution: 4096 steps</text>
+      <line x1="12" y1="88" x2="168" y2="88" stroke="#334155"/>
+      <text x="12" y="108" font-size="9" fill="#38bdf8">Raw Range: 0 .. 4095</text>
+      <text x="12" y="124" font-size="9" fill="#94a3b8">Sampling: 50Hz Bursts</text>
+    </g>
+
+    <g transform="translate(15, 220)">
+      <rect width="180" height="160" rx="8" fill="#111827" stroke="#10b981"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#34d399">Moving Average Filter</text>
+      <text x="12" y="44" font-size="10" fill="#cbd5e1">10-Sample Circular Ring</text>
+      <text x="12" y="66" font-size="10" fill="#38bdf8">y[n] = 1/10 Σ x[n-k]</text>
+      <text x="12" y="88" font-size="10" fill="#cbd5e1">Noise Rejection:</text>
+      <text x="12" y="104" font-size="9" fill="#94a3b8">• Suppresses relay RF spikes</text>
+      <text x="12" y="120" font-size="9" fill="#94a3b8">• Rejects transient dips</text>
+      <line x1="12" y1="130" x2="168" y2="130" stroke="#334155"/>
+      <text x="12" y="148" font-size="9" fill="#10b981">Zero Group Delay Latency</text>
+    </g>
+
+    <g transform="translate(15, 400)">
+      <rect width="180" height="100" rx="8" fill="#111827" stroke="#f59e0b"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#fbbf24">Checksum Validator</text>
+      <text x="12" y="44" font-size="10" fill="#cbd5e1">Bit 40 == (B1+B2+B3+B4)</text>
+      <text x="12" y="64" font-size="9" fill="#94a3b8">Guarantees zero corrupted</text>
+      <text x="12" y="80" font-size="9" fill="#94a3b8">environmental metrics</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <path d="M 470 365 L 500 365" stroke="#38bdf8" stroke-width="2" marker-end="url(#df-arrow)"/>
+
+  <!-- ================= STAGE 3: CALIBRATION & EDGE COMPUTE ================= -->
+  <g transform="translate(500, 100)">
+    <rect width="210" height="530" rx="14" fill="url(#dfCard)" stroke="#10b981" stroke-width="1.5"/>
+    <rect width="210" height="38" rx="14" fill="#1e293b"/>
+    <text x="105" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">3. Edge Calibration &amp; Math</text>
+
+    <g transform="translate(15, 60)">
+      <rect width="180" height="150" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#a7f3d0">Two-Point VWC Map</text>
+      <text x="12" y="44" font-size="9" fill="#cbd5e1">Dry Air (0%): ADC ≈ 3200</text>
+      <text x="12" y="60" font-size="9" fill="#cbd5e1">Saturated (100%): ADC ≈ 1500</text>
+      <line x1="12" y1="72" x2="168" y2="72" stroke="#334155"/>
+      <text x="12" y="90" font-size="9" fill="#38bdf8">VWC % Equation:</text>
+      <text x="12" y="106" font-size="8" fill="#e2e8f0">map(adc, Dry, Wet, 0, 100)</text>
+      <text x="12" y="124" font-size="9" fill="#94a3b8">Clamped: [0.0 .. 100.0%]</text>
+      <text x="12" y="140" font-size="9" fill="#a7f3d0">Stored in NVS Flash</text>
+    </g>
+
+    <g transform="translate(15, 230)">
+      <rect width="180" height="130" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#93c5fd">Water Level % Model</text>
+      <text x="12" y="44" font-size="9" fill="#cbd5e1">Empty Reservoir: ADC &lt; 200</text>
+      <text x="12" y="60" font-size="9" fill="#cbd5e1">Full Reservoir: ADC ≈ 2800</text>
+      <line x1="12" y1="72" x2="168" y2="72" stroke="#334155"/>
+      <text x="12" y="92" font-size="9" fill="#38bdf8">Capacity % Metric</text>
+      <text x="12" y="110" font-size="9" fill="#94a3b8">Dry-run lock limit: 20%</text>
+    </g>
+
+    <g transform="translate(15, 380)">
+      <rect width="180" height="120" rx="8" fill="#111827" stroke="#a855f7"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#c084fc">VPD &amp; ET0 Predictor</text>
+      <text x="12" y="44" font-size="9" fill="#cbd5e1">Vapor Pressure Deficit:</text>
+      <text x="12" y="60" font-size="8" fill="#e2e8f0">VPD = Es * (1 - RH / 100)</text>
+      <text x="12" y="78" font-size="9" fill="#cbd5e1">Micro-climate transpiration</text>
+      <text x="12" y="96" font-size="9" fill="#c084fc">Edge-AI Prepared</text>
+    </g>
+  </g>
+
+  <!-- Arrow 3 to 4 -->
+  <path d="M 710 365 L 740 365" stroke="#38bdf8" stroke-width="2" marker-end="url(#df-arrow)"/>
+
+  <!-- ================= STAGE 4: DECISION ENGINE ================= -->
+  <g transform="translate(740, 100)">
+    <rect width="200" height="530" rx="14" fill="url(#dfCard)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect width="200" height="38" rx="14" fill="#1e293b"/>
+    <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#fbbf24">4. Decision &amp; State</text>
+
+    <g transform="translate(15, 60)">
+      <rect width="170" height="150" rx="8" fill="#111827" stroke="#10b981"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#34d399">Hysteresis Logic</text>
+      <text x="12" y="44" font-size="10" fill="#cbd5e1">• If VWC &lt; 35%:</text>
+      <text x="24" y="60" font-size="10" fill="#34d399">Target = PUMP_ON</text>
+      <text x="12" y="78" font-size="10" fill="#cbd5e1">• If VWC &gt; 65%:</text>
+      <text x="24" y="94" font-size="10" fill="#f87171">Target = PUMP_OFF</text>
+      <line x1="12" y1="106" x2="158" y2="106" stroke="#334155"/>
+      <text x="12" y="124" font-size="9" fill="#94a3b8">Deadband: 35% - 65%</text>
+      <text x="12" y="140" font-size="9" fill="#94a3b8">Zero relay flapping</text>
+    </g>
+
+    <g transform="translate(15, 230)">
+      <rect width="170" height="140" rx="8" fill="#111827" stroke="#ef4444"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#f87171">Safety Interlocks</text>
+      <text x="12" y="44" font-size="9" fill="#cbd5e1">• Tank Level &lt; 20% ?</text>
+      <text x="24" y="60" font-size="9" fill="#f87171">-&gt; Hard Cutoff</text>
+      <text x="12" y="76" font-size="9" fill="#cbd5e1">• Continuous Run &gt; 300s?</text>
+      <text x="24" y="92" font-size="9" fill="#f87171">-&gt; Timeout Cutoff</text>
+      <line x1="12" y1="104" x2="158" y2="104" stroke="#334155"/>
+      <text x="12" y="122" font-size="9" fill="#fca5a5">Overrules All Commands</text>
+    </g>
+
+    <g transform="translate(15, 390)">
+      <rect width="170" height="110" rx="8" fill="#111827" stroke="#38bdf8"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#38bdf8">Hardware Command</text>
+      <text x="12" y="44" font-size="10" fill="#cbd5e1">GPIO5: LOW / HIGH</text>
+      <text x="12" y="62" font-size="10" fill="#cbd5e1">GPIO21: RGB State</text>
+      <line x1="12" y1="74" x2="158" y2="74" stroke="#334155"/>
+      <text x="12" y="94" font-size="9" fill="#10b981">Relay Contact Driven</text>
+    </g>
+  </g>
+
+  <!-- Arrow 4 to 5 -->
+  <path d="M 940 365 L 970 365" stroke="#38bdf8" stroke-width="2" marker-end="url(#df-arrow)"/>
+
+  <!-- ================= STAGE 5: BLYNK CLOUD TELEMETRY ================= -->
+  <g transform="translate(970, 100)">
+    <rect width="200" height="530" rx="14" fill="url(#dfCard)" stroke="#8b5cf6" stroke-width="1.5"/>
+    <rect width="200" height="38" rx="14" fill="#1e293b"/>
+    <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#c084fc">5. Cloud Virtual Pins</text>
+
+    <g transform="translate(15, 60)">
+      <rect width="170" height="230" rx="8" fill="#111827" stroke="#334155"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#c084fc">Virtual Pin Mapping</text>
+      <text x="12" y="44" font-size="10" fill="#cbd5e1">V0: Soil Moisture (%)</text>
+      <text x="12" y="64" font-size="10" fill="#cbd5e1">V1: Pump Control/State</text>
+      <text x="12" y="84" font-size="10" fill="#cbd5e1">V2: Reservoir Level (%)</text>
+      <text x="12" y="104" font-size="10" fill="#cbd5e1">V3: Temperature (°C)</text>
+      <text x="12" y="124" font-size="10" fill="#cbd5e1">V4: Rel. Humidity (%)</text>
+      <text x="12" y="144" font-size="10" fill="#cbd5e1">V5: Mode (Auto/Man)</text>
+      <text x="12" y="164" font-size="10" fill="#cbd5e1">V6: System State Str</text>
+      <text x="12" y="184" font-size="10" fill="#cbd5e1">V7: Uptime Counter</text>
+      <line x1="12" y1="198" x2="158" y2="198" stroke="#334155"/>
+      <text x="12" y="218" font-size="9" fill="#10b981">Dispatched Every 1000ms</text>
+    </g>
+
+    <g transform="translate(15, 310)">
+      <rect width="170" height="190" rx="8" fill="#111827" stroke="#06b6d4"/>
+      <text x="12" y="22" font-size="11" font-weight="700" fill="#22d3ee">Cloud Analytics</text>
+      <text x="12" y="44" font-size="10" fill="#cbd5e1">• Live Mobile Gauges</text>
+      <text x="12" y="64" font-size="10" fill="#cbd5e1">• Web Historical Graphs</text>
+      <text x="12" y="84" font-size="10" fill="#cbd5e1">• Automated Push Alarms</text>
+      <text x="12" y="104" font-size="10" fill="#cbd5e1">• Webhook Forwarding</text>
+      <text x="12" y="124" font-size="10" fill="#cbd5e1">• CSV Data Export</text>
+      <line x1="12" y1="140" x2="158" y2="140" stroke="#334155"/>
+      <text x="12" y="162" font-size="9" fill="#10b981">SIH / Minor Project</text>
+      <text x="12" y="178" font-size="9" fill="#38bdf8">Research-Ready Dataset</text>
+    </g>
+  </g>
+
+</svg>
