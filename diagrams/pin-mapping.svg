@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" width="100%" height="100%" style="background:#0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="pin-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: ESP32 PIN MAPPING &amp; WIRING MATRIX</text>
+  <text x="500" y="65" text-anchor="middle" font-size="12" fill="#94a3b8">Hardware Pin Allocation Rationale &amp; Electrical Interfacing Specifications</text>
+
+  <!-- ================= CENTRAL ESP32 DEVKIT V1 BOARD ================= -->
+  <g transform="translate(370, 100)">
+    <!-- Board Outline -->
+    <rect width="260" height="580" rx="14" fill="url(#boardGrad)" stroke="#475569" stroke-width="2"/>
+    <text x="130" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#f8fafc">ESP32 DEVKIT V1</text>
+    <text x="130" y="46" text-anchor="middle" font-size="10" fill="#94a3b8">30-PIN CH340 / CP2102</text>
+
+    <!-- Metal Shield ESP-WROOM-32 -->
+    <rect x="50" y="80" width="160" height="150" rx="8" fill="url(#chipGrad)" stroke="#64748b" stroke-width="1.5"/>
+    <text x="130" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#cbd5e1">ESP-WROOM-32</text>
+    <text x="130" y="165" text-anchor="middle" font-size="10" fill="#94a3b8">Wi-Fi + BT SoC</text>
+    <!-- Antenna Trace Area -->
+    <rect x="75" y="85" width="110" height="25" rx="3" fill="#0f172a" stroke="#475569"/>
+    <text x="130" y="102" text-anchor="middle" font-size="9" fill="#f59e0b">PCB ANTENNA</text>
+
+    <!-- Micro-USB Jack -->
+    <rect x="95" y="555" width="70" height="25" rx="3" fill="#64748b"/>
+    <text x="130" y="572" text-anchor="middle" font-size="9" font-weight="600" fill="#f8fafc">USB / UART</text>
+
+    <!-- Reset & Boot Buttons -->
+    <rect x="25" y="530" width="30" height="20" rx="4" fill="#334155"/>
+    <text x="40" y="544" text-anchor="middle" font-size="8" fill="#f8fafc">EN</text>
+    <rect x="205" y="530" width="30" height="20" rx="4" fill="#334155"/>
+    <text x="220" y="544" text-anchor="middle" font-size="8" fill="#f8fafc">BOOT</text>
+
+    <!-- Left Header Pins (1 to 15) -->
+    <!-- Pins: 3V3, GND, D15, D2, D4, D16, D17, D5, D18, D19, D21, RX, TX, D22, D23 -->
+    <g font-size="9" fill="#cbd5e1" font-family="monospace">
+      <rect x="10" y="250" width="22" height="12" rx="2" fill="#ef4444"/><text x="40" y="260">3V3</text>
+      <rect x="10" y="275" width="22" height="12" rx="2" fill="#334155"/><text x="40" y="285">GND</text>
+      <rect x="10" y="300" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="40" y="310">D15</text>
+      <rect x="10" y="325" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="40" y="335">D2</text>
+      <rect x="10" y="350" width="22" height="12" rx="2" fill="#f59e0b"/><text x="40" y="360" font-weight="700" fill="#fef3c7">D4 (GPIO4)</text>
+      <rect x="10" y="375" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="40" y="385">D16</text>
+      <rect x="10" y="400" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="40" y="410">D17</text>
+      <rect x="10" y="425" width="22" height="12" rx="2" fill="#ef4444"/><text x="40" y="435" font-weight="700" fill="#fca5a5">D5 (GPIO5)</text>
+      <rect x="10" y="450" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="40" y="460">D18</text>
+      <rect x="10" y="475" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="40" y="485">D19</text>
+      <rect x="10" y="500" width="22" height="12" rx="2" fill="#a855f7"/><text x="40" y="510" font-weight="700" fill="#f3e8ff">D21 (GPIO21)</text>
+    </g>
+
+    <!-- Right Header Pins (16 to 30) -->
+    <!-- Pins: VIN, GND, D13, D12, D14, D27, D26, D25, D33, D32, D35, D34, VN, VP -->
+    <g font-size="9" fill="#cbd5e1" font-family="monospace" text-anchor="end">
+      <rect x="228" y="250" width="22" height="12" rx="2" fill="#f59e0b"/><text x="220" y="260">VIN (5V)</text>
+      <rect x="228" y="275" width="22" height="12" rx="2" fill="#334155"/><text x="220" y="285">GND</text>
+      <rect x="228" y="300" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="310">D13</text>
+      <rect x="228" y="325" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="335">D12</text>
+      <rect x="228" y="350" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="360">D14</text>
+      <rect x="228" y="375" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="385">D27</text>
+      <rect x="228" y="400" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="410">D26</text>
+      <rect x="228" y="425" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="435">D25</text>
+      <rect x="228" y="450" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="460">D33</text>
+      <rect x="228" y="475" width="22" height="12" rx="2" fill="#1e293b" stroke="#64748b"/><text x="220" y="485">D32</text>
+      <rect x="228" y="500" width="22" height="12" rx="2" fill="#10b981"/><text x="220" y="510" font-weight="700" fill="#a7f3d0">D35 (GPIO35)</text>
+      <rect x="228" y="525" width="22" height="12" rx="2" fill="#3b82f6"/><text x="220" y="535" font-weight="700" fill="#bfdbfe">D34 (GPIO34)</text>
+    </g>
+  </g>
+
+  <!-- ================= CALLOUT BOXES (LEFT) ================= -->
+  <!-- Callout 1: DHT22 (GPIO4) -->
+  <g transform="translate(30, 320)">
+    <rect width="300" height="85" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="15" y="24" font-size="13" font-weight="700" fill="#fbbf24">GPIO4 — DHT22 Data Bus</text>
+    <text x="15" y="44" font-size="11" fill="#cbd5e1">• Type: Digital I/O with 10kΩ pullup</text>
+    <text x="15" y="60" font-size="11" fill="#cbd5e1">• Function: Reads Ambient Temp &amp; Humidity</text>
+    <text x="15" y="76" font-size="10" fill="#94a3b8">Rationale: Safe general GPIO; no boot glitch</text>
+  </g>
+  <path d="M 330 355 L 380 450" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#pin-arrow)"/>
+
+  <!-- Callout 2: Relay (GPIO5) -->
+  <g transform="translate(30, 425)">
+    <rect width="300" height="95" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="1.8"/>
+    <text x="15" y="24" font-size="13" font-weight="700" fill="#f87171">GPIO5 — 5V Relay Actuator</text>
+    <text x="15" y="44" font-size="11" fill="#cbd5e1">• Type: Output (Active LOW Trigger)</text>
+    <text x="15" y="60" font-size="11" fill="#cbd5e1">• Control: Optocoupler Inversion Buffer</text>
+    <text x="15" y="76" font-size="11" fill="#cbd5e1">• Safety: Defaults to HIGH (Pump OFF) at reset</text>
+    <text x="15" y="88" font-size="10" fill="#94a3b8">Rationale: Strapping pin defaults output HIGH</text>
+  </g>
+  <path d="M 330 472 L 380 525" stroke="#ef4444" stroke-width="1.8" marker-end="url(#pin-arrow)"/>
+
+  <!-- Callout 3: RGB LED (GPIO21) -->
+  <g transform="translate(30, 540)">
+    <rect width="300" height="85" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+    <text x="15" y="24" font-size="13" font-weight="700" fill="#c084fc">GPIO21 — RGB Telemetry LED</text>
+    <text x="15" y="44" font-size="11" fill="#cbd5e1">• Type: Digital Output / PWM Driver</text>
+    <text x="15" y="60" font-size="11" fill="#cbd5e1">• Function: Visual Heartbeat &amp; Alarm Status</text>
+    <text x="15" y="76" font-size="10" fill="#94a3b8">Rationale: Default I2C SDA pin re-allocated</text>
+  </g>
+  <path d="M 330 582 L 380 600" stroke="#a855f7" stroke-width="1.8" marker-end="url(#pin-arrow)"/>
+
+  <!-- ================= CALLOUT BOXES (RIGHT) ================= -->
+  <!-- Callout 4: Power Rail (VIN / 5V) -->
+  <g transform="translate(670, 215)">
+    <rect width="300" height="85" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="15" y="24" font-size="13" font-weight="700" fill="#fbbf24">VIN / 5V Rail Input</text>
+    <text x="15" y="44" font-size="11" fill="#cbd5e1">• Source: LM2596 DC-DC Buck (Step from 12V)</text>
+    <text x="15" y="60" font-size="11" fill="#cbd5e1">• Feeds: Internal AMS1117 3.3V Low-Dropout Reg</text>
+    <text x="15" y="76" font-size="10" fill="#94a3b8">Decoupling: 100uF Electrolytic + 100nF Ceramic</text>
+  </g>
+  <path d="M 670 260 L 620 350" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#pin-arrow)"/>
+
+  <!-- Callout 5: Soil Moisture (GPIO35) -->
+  <g transform="translate(670, 440)">
+    <rect width="300" height="100" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.8"/>
+    <text x="15" y="24" font-size="13" font-weight="700" fill="#34d399">GPIO35 — Capacitive Soil Sensor</text>
+    <text x="15" y="44" font-size="11" fill="#cbd5e1">• Subsystem: ADC1_CH7 (12-bit, 0..4095)</text>
+    <text x="15" y="60" font-size="11" fill="#cbd5e1">• Characteristics: Input-only pad (no pullup)</text>
+    <text x="15" y="76" font-size="11" fill="#a7f3d0">• CRITICAL: Immune to Wi-Fi RF SAR ADC conflicts</text>
+    <text x="15" y="92" font-size="10" fill="#94a3b8">ADC2 is blocked when Wi-Fi is active; ADC1 is safe</text>
+  </g>
+  <path d="M 670 490 L 620 600" stroke="#10b981" stroke-width="1.8" marker-end="url(#pin-arrow)"/>
+
+  <!-- Callout 6: Water Level (GPIO34) -->
+  <g transform="translate(670, 560)">
+    <rect width="300" height="100" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="1.8"/>
+    <text x="15" y="24" font-size="13" font-weight="700" fill="#60a5fa">GPIO34 — Water Reservoir Level</text>
+    <text x="15" y="44" font-size="11" fill="#cbd5e1">• Subsystem: ADC1_CH6 (12-bit Analog)</text>
+    <text x="15" y="60" font-size="11" fill="#cbd5e1">• Characteristics: Input-only pad</text>
+    <text x="15" y="76" font-size="11" fill="#bfdbfe">• Anti-Cavitation Guard: Prevents pump burnout</text>
+    <text x="15" y="92" font-size="10" fill="#94a3b8">ADC1 ensures 100% continuous reads alongside Wi-Fi</text>
+  </g>
+  <path d="M 670 610 L 620 625" stroke="#3b82f6" stroke-width="1.8" marker-end="url(#pin-arrow)"/>
+
+</svg>
