@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1020" width="100%" height="100%" style="background:#0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="warnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f87171" />
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: DECISION FLOWCHART</text>
+  <text x="400" y="65" text-anchor="middle" font-size="12" fill="#94a3b8">Hysteretic Edge Control, Reservoir Anti-Cavitation Guard, &amp; Failsafe Dispatcher</text>
+
+  <!-- 1. START / LOOP TICK -->
+  <g transform="translate(280, 95)">
+    <rect width="240" height="46" rx="23" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" font-size="13" font-weight="600" fill="#f8fafc">Loop Tick (Non-blocking millis)</text>
+  </g>
+  <path d="M 400 141 L 400 170" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 2. SENSOR ACQUISITION & FILTERING -->
+  <g transform="translate(250, 170)">
+    <rect width="300" height="60" rx="10" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5"/>
+    <text x="150" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#e2e8f0">Acquire &amp; Filter Sensor Data</text>
+    <text x="150" y="44" text-anchor="middle" font-size="11" fill="#94a3b8">10-Sample Moving Avg (Soil, Water, DHT22)</text>
+  </g>
+  <path d="M 400 230 L 400 260" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 3. DECISION DIAMOND: SENSOR FAULT? -->
+  <g transform="translate(400, 305)">
+    <polygon points="0,-40 120,0 0,40 -120,0" fill="#1e293b" stroke="#f59e0b" stroke-width="1.8"/>
+    <text x="0" y="5" text-anchor="middle" font-size="12" font-weight="600" fill="#fef3c7">Sensor Fault Detected?</text>
+    <text x="0" y="20" text-anchor="middle" font-size="10" fill="#d97706">(VWC &lt; 0% or &gt; 100%)</text>
+  </g>
+  <!-- Yes -> Failsafe Action -->
+  <path d="M 520 305 L 640 305 L 640 370" stroke="#f87171" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="555" y="295" font-size="11" font-weight="600" fill="#f87171">YES (Fault)</text>
+
+  <!-- Fault Action Box -->
+  <g transform="translate(560, 370)">
+    <rect width="160" height="56" rx="8" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="80" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#fca5a5">Emergency Lock</text>
+    <text x="80" y="42" text-anchor="middle" font-size="10" fill="#fecaca">Pump OFF | Error Alert</text>
+  </g>
+
+  <!-- No -> Water Level Check -->
+  <path d="M 400 345 L 400 380" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="410" y="365" font-size="11" font-weight="600" fill="#34d399">NO</text>
+
+  <!-- 4. DECISION DIAMOND: TANK LOW? -->
+  <g transform="translate(400, 425)">
+    <polygon points="0,-40 120,0 0,40 -120,0" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="0" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="#fee2e2">Reservoir Low?</text>
+    <text x="0" y="16" text-anchor="middle" font-size="10" fill="#f87171">(Water Level &lt; 20%)</text>
+  </g>
+  <!-- Yes -> Cutoff & Alert -->
+  <path d="M 280 425 L 160 425 L 160 480" stroke="#f87171" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="200" y="415" font-size="11" font-weight="600" fill="#f87171">YES (Low)</text>
+
+  <!-- Tank Empty Action Box -->
+  <g transform="translate(80, 480)">
+    <rect width="160" height="60" rx="8" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="80" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#fca5a5">Dry-Run Cutoff</text>
+    <text x="80" y="42" text-anchor="middle" font-size="10" fill="#fecaca">Force Pump OFF</text>
+    <text x="80" y="54" text-anchor="middle" font-size="9" fill="#f87171">Push "Refill Tank" Alert</text>
+  </g>
+
+  <!-- No -> Mode Check -->
+  <path d="M 400 465 L 400 500" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="410" y="485" font-size="11" font-weight="600" fill="#34d399">NO (Water OK)</text>
+
+  <!-- 5. DECISION DIAMOND: OPERATION MODE? -->
+  <g transform="translate(400, 545)">
+    <polygon points="0,-40 120,0 0,40 -120,0" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.8"/>
+    <text x="0" y="5" text-anchor="middle" font-size="12" font-weight="600" fill="#ede9fe">Operating Mode?</text>
+  </g>
+
+  <!-- Left Branch: Manual Mode -->
+  <path d="M 280 545 L 200 545 L 200 600" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="215" y="535" font-size="11" font-weight="600" fill="#c084fc">MANUAL</text>
+
+  <g transform="translate(110, 600)">
+    <rect width="180" height="75" rx="8" fill="url(#cardGrad)" stroke="#8b5cf6" stroke-width="1.2"/>
+    <text x="90" y="22" text-anchor="middle" font-size="11" font-weight="600" fill="#e2e8f0">Blynk Manual Switch</text>
+    <text x="90" y="40" text-anchor="middle" font-size="10" fill="#94a3b8">If Switch == ON &amp; Safe:</text>
+    <text x="90" y="55" text-anchor="middle" font-size="10" fill="#38bdf8">Run Pump (Max 180s)</text>
+    <text x="90" y="68" text-anchor="middle" font-size="9" fill="#94a3b8">Else: Standby</text>
+  </g>
+
+  <!-- Down Branch: Auto Mode -->
+  <path d="M 400 585 L 400 625" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="410" y="605" font-size="11" font-weight="600" fill="#34d399">AUTOMATIC</text>
+
+  <!-- 6. DECISION DIAMOND: SOIL MOISTURE HYSTERESIS -->
+  <g transform="translate(400, 670)">
+    <polygon points="0,-45 130,0 0,45 -130,0" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="0" y="-8" text-anchor="middle" font-size="12" font-weight="700" fill="#d1fae5">Moisture vs Limits</text>
+    <text x="0" y="10" text-anchor="middle" font-size="10" fill="#6ee7b7">Dry: &lt; 35% | Wet: &gt; 65%</text>
+    <text x="0" y="26" text-anchor="middle" font-size="9" fill="#94a3b8">Deadband: 35% - 65%</text>
+  </g>
+
+  <!-- Moisture < 35%: Pump ON -->
+  <path d="M 530 670 L 630 670 L 630 735" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="545" y="660" font-size="11" font-weight="600" fill="#10b981">&lt; 35% (Dry)</text>
+
+  <g transform="translate(540, 735)">
+    <rect width="180" height="70" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="90" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#a7f3d0">Irrigate: Pump ON</text>
+    <text x="90" y="42" text-anchor="middle" font-size="10" fill="#d1fae5">• Relay Active (LOW)</text>
+    <text x="90" y="58" text-anchor="middle" font-size="10" fill="#d1fae5">• Watchdog Timer Started</text>
+  </g>
+
+  <!-- Moisture > 65%: Pump OFF -->
+  <path d="M 270 670 L 190 670 L 190 735" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="195" y="660" font-size="11" font-weight="600" fill="#f87171">&gt; 65% (Moist)</text>
+
+  <g transform="translate(100, 735)">
+    <rect width="180" height="70" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="90" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#fca5a5">Target Met: Pump OFF</text>
+    <text x="90" y="42" text-anchor="middle" font-size="10" fill="#cbd5e1">• Relay Inactive (HIGH)</text>
+    <text x="90" y="58" text-anchor="middle" font-size="10" fill="#cbd5e1">• Enter Resting Cooldown</text>
+  </g>
+
+  <!-- Moisture in Deadband: Maintain State -->
+  <path d="M 400 715 L 400 755" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="410" y="735" font-size="10" fill="#94a3b8">35% - 65%</text>
+
+  <g transform="translate(320, 755)">
+    <rect width="160" height="50" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="80" y="22" text-anchor="middle" font-size="11" font-weight="600" fill="#e2e8f0">Maintain State</text>
+    <text x="80" y="38" text-anchor="middle" font-size="10" fill="#94a3b8">Prevents Relay Chatter</text>
+  </g>
+
+  <!-- Join back paths for Telemetry & Sleep -->
+  <path d="M 190 805 L 190 855 L 300 855" stroke="#64748b" stroke-width="1.5"/>
+  <path d="M 400 805 L 400 855" stroke="#64748b" stroke-width="1.5"/>
+  <path d="M 630 805 L 630 855 L 500 855" stroke="#64748b" stroke-width="1.5"/>
+  <path d="M 200 675 L 200 855" stroke="#64748b" stroke-width="1.5"/>
+  <path d="M 160 540 L 160 855" stroke="#64748b" stroke-width="1.5"/>
+  <path d="M 640 426 L 640 855" stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- 7. TELEMETRY PUSH -->
+  <path d="M 400 855 L 400 885" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g transform="translate(260, 885)">
+    <rect width="280" height="55" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="140" y="24" text-anchor="middle" font-size="12" font-weight="600" fill="#38bdf8">Dispatch Blynk Telemetry</text>
+    <text x="140" y="42" text-anchor="middle" font-size="10" fill="#94a3b8">Sync V-Pins (V0-V10) • Update LED Indicators</text>
+  </g>
+
+  <!-- Loop back to start -->
+  <path d="M 540 912 L 750 912 L 750 118 L 520 118" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+  <text x="760" y="515" font-size="11" fill="#38bdf8" transform="rotate(90 760 515)">Cooperative Schedule Repeat</text>
+
+</svg>
