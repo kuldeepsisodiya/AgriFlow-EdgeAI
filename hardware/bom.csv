@@ -1,0 +1,16 @@
+Item,Component,Part Number / Model,Key Specifications,Qty,Package / Form Factor,Est. Unit Cost (INR),Est. Unit Cost (USD),Supplier Link / Note
+1,Microcontroller Module,ESP32 DevKit V1 (ESP-WROOM-32),Dual Core 240MHz 520KB SRAM 4MB Flash Wi-Fi/BLE,1,30-Pin Breadboard DIP,380.00,4.60,Standard ESP-WROOM-32 Dev board
+2,Soil Moisture Sensor,Capacitive Soil Sensor v1.2,Frequency-based capacitive corrosion resistant 3.3V-5V,1,PCB Probe with Cable,95.00,1.15,Avoid resistive probes to prevent corrosion
+3,Reservoir Level Sensor,Immersion Contact Level Sensor,Analog resistive depth transducer 0-40mm,1,FR4 Substrate Strip,60.00,0.72,Liquid level anti-cavitation detector
+4,Temperature & Humidity,DHT22 (AM2302),-40 to 80°C (+-0.5°C) 0-100% RH (+-2% RH),1,4-Pin Single-Bus Module,240.00,2.90,Includes onboard pull-up resistor
+5,Relay Actuation Module,Songle 1-Channel 5V Relay,Optocoupled PC817 isolation 10A 250VAC / 10A 30VDC,1,Module with Terminal Blocks,75.00,0.90,Active-LOW trigger with flyback diode
+6,DC Submersible Pump,R385 / JT-DC3W Mini Submersible,12V DC 0.8A Flow rate 1.5-2.0 L/min Lift 1.5m,1,DC Motor Submersible,160.00,1.95,Submerged in reservoir or inline diaphragm
+7,Step-Down Buck Converter,LM2596 DC-DC Buck Module,Input 4.5-40V Output 1.25-35V (tuned to 5.0V) 3A max,1,SMD Module,85.00,1.05,High-efficiency power down-conversion
+8,Power Supply Adapter,12V 2A DC SMPS Adapter,Input 100-240VAC Output 12VDC 2.0A 24W Center Positive,1,Wall Plug 5.5x2.1mm,250.00,3.00,Powers pump & buck converter simultaneously
+9,Flyback Diode,1N4007,1000V 1A General Purpose Rectifier,1,DO-41 Through Hole,2.00,0.03,Inductive kick protection across pump terminals
+10,Decoupling Capacitors,Electrolytic + Ceramic,100uF 25V Electrolytic + 100nF 50V Ceramic,2,Radial + 0805,10.00,0.12,Smooths 5V/12V rails during relay energization
+11,Resistors,Carbon Film Metal Film,10k Ohm 1/4W (DHT22 Pull-up) + 330 Ohm (LED),2,Through Hole 1/4W,2.00,0.03,Signal pull-up and current limiting
+12,Status LED Indicator,WS2812B / 5mm Tri-Color RGB,Super-bright Common Cathode 20mA,1,Through Hole 5mm,15.00,0.18,Visual telemetry feedback
+13,Irrigation Tubing,Food-Grade Silicone Tubing,8mm Outer Diameter 6mm Inner Diameter,2m,Flexible Hose,80.00,0.96,Drip irrigation water delivery line
+14,Hardware Enclosure & Wires,IP65 Weatherproof Junction Box,158x90x60mm ABS Plastic with Cable Glands + Jumpers,1,IP65 Enclosure,350.00,4.25,Field enclosure for moisture protection
+,,,,TOTAL ESTIMATED COST:,1789.00,21.84,Budget-friendly for SIH and smallholder farmers
