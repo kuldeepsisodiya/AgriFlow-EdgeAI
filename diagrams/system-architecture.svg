@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%" style="background:#0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Title & Header -->
+  <text x="600" y="45" text-anchor="middle" font-size="24" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: SYSTEM ARCHITECTURE</text>
+  <text x="600" y="70" text-anchor="middle" font-size="13" font-weight="400" fill="#94a3b8">Multi-Tier Edge Computing, Hysteretic Decision Control, and Cloud Telemetry Engine</text>
+
+  <!-- ================= SECTION 1: PERCEPTION & ACTUATION (LEFT) ================= -->
+  <rect x="30" y="100" width="280" height="540" rx="16" fill="url(#cardBg)" stroke="#334155" stroke-width="1.5"/>
+  <rect x="30" y="100" width="280" height="42" rx="16" fill="#1e293b"/>
+  <rect x="30" y="130" width="280" height="12" fill="#1e293b"/>
+  <circle cx="55" cy="121" r="6" fill="#10b981"/>
+  <text x="75" y="126" font-size="14" font-weight="700" fill="#f1f5f9">1. Physical Field &amp; Sensors</text>
+
+  <!-- Sensor 1: Soil Moisture -->
+  <g transform="translate(50, 160)">
+    <rect width="240" height="70" rx="10" fill="#0f172a" stroke="#10b981" stroke-width="1.2"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">Capacitive Soil Sensor v1.2</text>
+    <text x="15" y="46" font-size="11" fill="#94a3b8">Corrosion-Resistant Frequency Mod</text>
+    <text x="15" y="60" font-size="10" fill="#38bdf8">Pin: GPIO35 (ADC1_CH7)</text>
+  </g>
+
+  <!-- Sensor 2: Water Level -->
+  <g transform="translate(50, 245)">
+    <rect width="240" height="70" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.2"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">Submersible Reservoir Level</text>
+    <text x="15" y="46" font-size="11" fill="#94a3b8">Dry-Run Anti-Cavitation Guard</text>
+    <text x="15" y="60" font-size="10" fill="#38bdf8">Pin: GPIO34 (ADC1_CH6)</text>
+  </g>
+
+  <!-- Sensor 3: DHT22 -->
+  <g transform="translate(50, 330)">
+    <rect width="240" height="70" rx="10" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">DHT22 Ambient Microclimate</text>
+    <text x="15" y="46" font-size="11" fill="#94a3b8">Temp (-40..80°C) | Humidity (0..100%)</text>
+    <text x="15" y="60" font-size="10" fill="#38bdf8">Pin: GPIO4 (Digital Single-Bus)</text>
+  </g>
+
+  <!-- Actuator 1: Relay & Pump -->
+  <g transform="translate(50, 430)">
+    <rect width="240" height="90" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.2"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">5V Optocoupled Relay Module</text>
+    <text x="15" y="46" font-size="11" fill="#94a3b8">Controls 12V DC Irrigation Pump</text>
+    <text x="15" y="64" font-size="11" fill="#cbd5e1">Flyback &amp; Optical Isolation Barrier</text>
+    <text x="15" y="80" font-size="10" fill="#ef4444">Pin: GPIO5 (Active Low)</text>
+  </g>
+
+  <!-- Actuator 2: LED Matrix -->
+  <g transform="translate(50, 535)">
+    <rect width="240" height="70" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="1.2"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">RGB System Telemetry Status</text>
+    <text x="15" y="46" font-size="11" fill="#94a3b8">Visual Heartbeat &amp; Fault Annunciator</text>
+    <text x="15" y="60" font-size="10" fill="#a855f7">Pin: GPIO21</text>
+  </g>
+
+  <!-- ================= SECTION 2: EDGE CONTROLLER (CENTER) ================= -->
+  <rect x="370" y="100" width="460" height="540" rx="16" fill="url(#cardBg)" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="370" y="100" width="460" height="42" rx="16" fill="#1e293b"/>
+  <rect x="370" y="130" width="460" height="12" fill="#1e293b"/>
+  <circle cx="395" cy="121" r="6" fill="#3b82f6"/>
+  <text x="415" y="126" font-size="14" font-weight="700" fill="#f1f5f9">2. ESP32 Edge Computing Core (Modular Firmware)</text>
+
+  <!-- Sensor Acquisition & Filter -->
+  <g transform="translate(390, 160)">
+    <rect width="420" height="70" rx="10" fill="#111827" stroke="#334155"/>
+    <text x="20" y="26" font-size="13" font-weight="600" fill="#38bdf8">SensorManager &amp; Signal Filter</text>
+    <text x="20" y="44" font-size="11" fill="#94a3b8">• 10-Sample Moving Average (Noise Rejection) • Non-blocking millis()</text>
+    <text x="20" y="60" font-size="11" fill="#94a3b8">• Linear Two-Point VWC Calibration Map (NVS Storage)</text>
+  </g>
+
+  <!-- Decision Engine & State Machine -->
+  <g transform="translate(390, 245)">
+    <rect width="420" height="95" rx="10" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+    <text x="20" y="26" font-size="13" font-weight="700" fill="#10b981">Edge DecisionEngine &amp; State Machine</text>
+    <text x="20" y="46" font-size="11" fill="#cbd5e1">• Hysteretic Thresholds: SOIL_DRY (35%) vs SOIL_WET (65%)</text>
+    <text x="20" y="64" font-size="11" fill="#cbd5e1">• Multi-Factor Logic: Moisture Deficit + Reservoir Capacity &gt; 20%</text>
+    <text x="20" y="82" font-size="11" fill="#cbd5e1">• States: BOOT | MONITORING | IRRIGATING | TANK_EMPTY | OVERRIDE</text>
+  </g>
+
+  <!-- Safety & Watchdog Interlock -->
+  <g transform="translate(390, 355)">
+    <rect width="420" height="75" rx="10" fill="#111827" stroke="#ef4444"/>
+    <text x="20" y="26" font-size="13" font-weight="600" fill="#f87171">PumpController &amp; Hardware Safety Interlock</text>
+    <text x="20" y="44" font-size="11" fill="#94a3b8">• Hard Dry-Run Lock (Instant Cutoff when Tank Level &lt; 20%)</text>
+    <text x="20" y="62" font-size="11" fill="#94a3b8">• Max Continuous Run Timeout (300s) to Prevent Field Flooding</text>
+  </g>
+
+  <!-- WiFi & Offline Resilience -->
+  <g transform="translate(390, 445)">
+    <rect width="420" height="75" rx="10" fill="#111827" stroke="#3b82f6"/>
+    <text x="20" y="26" font-size="13" font-weight="600" fill="#60a5fa">WiFiManager &amp; Offline Autonomous Engine</text>
+    <text x="20" y="44" font-size="11" fill="#94a3b8">• Exponential Reconnect Backoff with Zero Thread Blocking</text>
+    <text x="20" y="62" font-size="11" fill="#94a3b8">• 100% Autonomous Local Edge Operation during Cloud Outage</text>
+  </g>
+
+  <!-- Future AI Slot -->
+  <g transform="translate(390, 535)">
+    <rect width="420" height="70" rx="10" fill="#111827" stroke="#a855f7" stroke-dasharray="4,4"/>
+    <text x="20" y="26" font-size="13" font-weight="600" fill="#c084fc">TinyML Inference Hook (Edge-AI Roadmap)</text>
+    <text x="20" y="44" font-size="11" fill="#94a3b8">• TFLite Micro Evapotranspiration (ET0) Estimator</text>
+    <text x="20" y="60" font-size="11" fill="#94a3b8">• Vapor Pressure Deficit (VPD) Predictive Irrigation</text>
+  </g>
+
+  <!-- ================= SECTION 3: CLOUD & USER LAYER (RIGHT) ================= -->
+  <rect x="890" y="100" width="280" height="540" rx="16" fill="url(#cardBg)" stroke="#8b5cf6" stroke-width="1.5"/>
+  <rect x="890" y="100" width="280" height="42" rx="16" fill="#1e293b"/>
+  <rect x="890" y="130" width="280" height="12" fill="#1e293b"/>
+  <circle cx="915" cy="121" r="6" fill="#8b5cf6"/>
+  <text x="935" y="126" font-size="14" font-weight="700" fill="#f1f5f9">3. Cloud &amp; User Interface</text>
+
+  <!-- Blynk Cloud 2.0 -->
+  <g transform="translate(910, 160)">
+    <rect width="240" height="110" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.2"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">Blynk IoT 2.0 Cloud</text>
+    <text x="15" y="48" font-size="11" fill="#94a3b8">• Virtual Pin Registers (V0-V10)</text>
+    <text x="15" y="66" font-size="11" fill="#94a3b8">• Bidirectional TLS Streaming</text>
+    <text x="15" y="84" font-size="11" fill="#94a3b8">• Webhook Event Forwarding</text>
+    <text x="15" y="100" font-size="11" fill="#c084fc">• Push Alerts &amp; Critical Alarms</text>
+  </g>
+
+  <!-- Mobile & Web Dashboard -->
+  <g transform="translate(910, 290)">
+    <rect width="240" height="150" rx="10" fill="#0f172a" stroke="#06b6d4" stroke-width="1.2"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">Agronomist Dashboard</text>
+    <text x="15" y="48" font-size="11" fill="#94a3b8">Real-time Telemetry Gauges:</text>
+    <text x="15" y="66" font-size="11" fill="#38bdf8">• Soil Moisture &amp; Water Level %</text>
+    <text x="15" y="84" font-size="11" fill="#38bdf8">• Temperature &amp; Relative Humidity</text>
+    <text x="15" y="104" font-size="11" fill="#94a3b8">Control Widgets:</text>
+    <text x="15" y="122" font-size="11" fill="#10b981">• Auto / Manual Mode Toggle</text>
+    <text x="15" y="140" font-size="11" fill="#ef4444">• Remote Pump Kill Switch</text>
+  </g>
+
+  <!-- Cloud Historical Analytics -->
+  <g transform="translate(910, 460)">
+    <rect width="240" height="145" rx="10" fill="#0f172a" stroke="#64748b"/>
+    <text x="15" y="28" font-size="13" font-weight="600" fill="#e2e8f0">Telemetry &amp; Logging</text>
+    <text x="15" y="48" font-size="11" fill="#94a3b8">• Daily Water Consumption (L)</text>
+    <text x="15" y="66" font-size="11" fill="#94a3b8">• Pump Duty-Cycle History</text>
+    <text x="15" y="84" font-size="11" fill="#94a3b8">• Soil Moisture Depletion Curve</text>
+    <text x="15" y="104" font-size="11" fill="#94a3b8">• Fault &amp; Low-Water Event Logs</text>
+    <text x="15" y="128" font-size="10" fill="#10b981">SIH / Minor Project Dataset Ready</text>
+  </g>
+
+  <!-- ================= CONNECTORS / ARROWS ================= -->
+  <!-- Sensors to Controller -->
+  <path d="M 290 195 L 390 195" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrowhead-green)"/>
+  <path d="M 290 280 L 390 205" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 290 365 L 390 215" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Controller to Actuators -->
+  <path d="M 390 392 L 340 392 L 340 475 L 290 475" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 390 410 L 320 410 L 320 570 L 290 570" fill="none" stroke="#a855f7" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Controller to Cloud (Bi-directional) -->
+  <path d="M 830 482 L 870 482 L 870 215 L 910 215" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 910 225 L 860 225 L 860 495 L 830 495" fill="none" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+</svg>
