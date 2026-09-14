@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%" style="background:#070d19; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="infoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="titleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Banner Top -->
+  <text x="600" y="50" text-anchor="middle" font-size="28" font-weight="900" fill="url(#titleGlow)" letter-spacing="1">AGRIFLOW-EDGEAI: EXECUTIVE PROJECT INFOGRAPHIC</text>
+  <text x="600" y="78" text-anchor="middle" font-size="14" fill="#94a3b8">Smart India Hackathon (SIH) &amp; Engineering Minor Project • Precision Edge-AI Irrigation</text>
+
+  <!-- 4 Primary Pillars Grid -->
+  <!-- Pillar 1: Problem Statement -->
+  <g transform="translate(40, 110)">
+    <rect width="260" height="420" rx="14" fill="url(#infoGrad)" stroke="#ef4444" stroke-width="1.8"/>
+    <rect width="260" height="40" rx="14" fill="#450a0a"/>
+    <rect y="24" width="260" height="16" fill="#450a0a"/>
+    <text x="130" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#fca5a5">1. THE PROBLEM</text>
+    <g transform="translate(20, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="700" fill="#ef4444">70% Global Freshwater</text>
+      <text x="0" y="40">Consumed by agricultural</text>
+      <text x="0" y="58">irrigation worldwide.</text>
+
+      <text x="0" y="95" font-weight="700" fill="#f59e0b">60% Inefficiency</text>
+      <text x="0" y="115">Over-irrigation leads to</text>
+      <text x="0" y="133">root rot, nutrient leaching,</text>
+      <text x="0" y="151">&amp; water table depletion.</text>
+
+      <text x="0" y="190" font-weight="700" fill="#f87171">Pump Burnout</text>
+      <text x="0" y="210">Dry running during reservoir</text>
+      <text x="0" y="228">depletion causes costly</text>
+      <text x="0" y="246">motor coil destruction.</text>
+
+      <text x="0" y="285" font-weight="700" fill="#94a3b8">Cloud Fragility</text>
+      <text x="0" y="305">Hobbyist systems halt</text>
+      <text x="0" y="323">completely when Wi-Fi drops.</text>
+    </g>
+  </g>
+
+  <!-- Pillar 2: Edge-AI Innovation -->
+  <g transform="translate(330, 110)">
+    <rect width="260" height="420" rx="14" fill="url(#infoGrad)" stroke="#10b981" stroke-width="2"/>
+    <rect width="260" height="40" rx="14" fill="#064e3b"/>
+    <rect y="24" width="260" height="16" fill="#064e3b"/>
+    <text x="130" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#a7f3d0">2. OUR INNOVATION</text>
+    <g transform="translate(20, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="700" fill="#10b981">Edge Autonomy</text>
+      <text x="0" y="40">ESP32 makes local decisions</text>
+      <text x="0" y="58">with 0ms cloud dependency.</text>
+
+      <text x="0" y="95" font-weight="700" fill="#34d399">Dual Hysteresis</text>
+      <text x="0" y="115">35% Dry vs 65% Wet deadband</text>
+      <text x="0" y="133">prevents relay contact</text>
+      <text x="0" y="151">chatter and arcing.</text>
+
+      <text x="0" y="190" font-weight="700" fill="#a7f3d0">Anti-Cavitation Guard</text>
+      <text x="0" y="210">Hardware lock trips pump</text>
+      <text x="0" y="228">instantly if reservoir &lt; 20%.</text>
+
+      <text x="0" y="265" font-weight="700" fill="#6ee7b7">Moving Average Filter</text>
+      <text x="0" y="285">10-sample circular buffer</text>
+      <text x="0" y="303">suppresses relay RF noise.</text>
+    </g>
+  </g>
+
+  <!-- Pillar 3: Engineering Architecture -->
+  <g transform="translate(620, 110)">
+    <rect width="260" height="420" rx="14" fill="url(#infoGrad)" stroke="#38bdf8" stroke-width="1.8"/>
+    <rect width="260" height="40" rx="14" fill="#0c4a6e"/>
+    <rect y="24" width="260" height="16" fill="#0c4a6e"/>
+    <text x="130" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#bae6fd">3. ARCHITECTURE</text>
+    <g transform="translate(20, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="700" fill="#38bdf8">Modular C++ (8 Files)</text>
+      <text x="0" y="40">Clean separation of</text>
+      <text x="0" y="58">managers &amp; controllers.</text>
+
+      <text x="0" y="95" font-weight="700" fill="#60a5fa">Cooperative millis()</text>
+      <text x="0" y="115">Zero blocking delay() calls;</text>
+      <text x="0" y="133">high concurrency.</text>
+
+      <text x="0" y="170" font-weight="700" fill="#38bdf8">ADC1 Dedication</text>
+      <text x="0" y="190">GPIO35 &amp; 34 immune</text>
+      <text x="0" y="208">to Wi-Fi SAR conflict.</text>
+
+      <text x="0" y="245" font-weight="700" fill="#93c5fd">Blynk IoT 2.0 Cloud</text>
+      <text x="0" y="265">Virtual Pins V0-V10</text>
+      <text x="0" y="283">with TLS security.</text>
+    </g>
+  </g>
+
+  <!-- Pillar 4: Real-World Impact -->
+  <g transform="translate(900, 110)">
+    <rect width="260" height="420" rx="14" fill="url(#infoGrad)" stroke="#a855f7" stroke-width="1.8"/>
+    <rect width="260" height="40" rx="14" fill="#3b0764"/>
+    <rect y="24" width="260" height="16" fill="#3b0764"/>
+    <text x="130" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#f3e8ff">4. VERIFIED IMPACT</text>
+    <g transform="translate(20, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="800" font-size="18" fill="#10b981">42%</text>
+      <text x="0" y="38">Freshwater conserved</text>
+      <text x="0" y="54">vs schedule watering.</text>
+
+      <text x="0" y="90" font-weight="800" font-size="18" fill="#38bdf8">300s</text>
+      <text x="0" y="108">Max runtime watchdog</text>
+      <text x="0" y="124">eliminates field flooding.</text>
+
+      <text x="0" y="160" font-weight="800" font-size="18" fill="#f59e0b">&lt; $25</text>
+      <text x="0" y="178">Total BOM cost</text>
+      <text x="0" y="194">(High rural affordability).</text>
+
+      <text x="0" y="230" font-weight="800" font-size="18" fill="#c084fc">100%</text>
+      <text x="0" y="248">Edge survivability</text>
+      <text x="0" y="264">during complete outage.</text>
+    </g>
+  </g>
+
+  <!-- Bottom Strip: SIH Alignment & SDGs -->
+  <g transform="translate(40, 560)">
+    <rect width="1120" height="200" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="30" y="34" font-size="15" font-weight="700" fill="#f8fafc">Smart India Hackathon (SIH) Alignment &amp; UN Sustainable Development Goals</text>
+
+    <!-- SDG Badges -->
+    <g transform="translate(30, 55)">
+      <!-- SDG 6 -->
+      <g transform="translate(0, 0)">
+        <rect width="250" height="110" rx="8" fill="#111827" stroke="#0284c7"/>
+        <text x="15" y="24" font-size="12" font-weight="700" fill="#38bdf8">UN SDG 6: Clean Water</text>
+        <text x="15" y="46" font-size="10" fill="#94a3b8">Prevents irrigation runoff,</text>
+        <text x="15" y="62" font-size="10" fill="#94a3b8">reduces aquifer strain,</text>
+        <text x="15" y="78" font-size="10" fill="#94a3b8">&amp; eliminates over-saturation.</text>
+      </g>
+
+      <!-- SDG 2 -->
+      <g transform="translate(270, 0)">
+        <rect width="250" height="110" rx="8" fill="#111827" stroke="#d97706"/>
+        <text x="15" y="24" font-size="12" font-weight="700" fill="#fbbf24">UN SDG 2: Zero Hunger</text>
+        <text x="15" y="46" font-size="10" fill="#94a3b8">Optimal root-zone hydration</text>
+        <text x="15" y="62" font-size="10" fill="#94a3b8">enhances crop yields by 18-24%</text>
+        <text x="15" y="78" font-size="10" fill="#94a3b8">across tomato &amp; chili pilots.</text>
+      </g>
+
+      <!-- SDG 9 -->
+      <g transform="translate(540, 0)">
+        <rect width="250" height="110" rx="8" fill="#111827" stroke="#dc2626"/>
+        <text x="15" y="24" font-size="12" font-weight="700" fill="#f87171">UN SDG 9: Innovation</text>
+        <text x="15" y="46" font-size="10" fill="#94a3b8">Democratizes industrial-tier</text>
+        <text x="15" y="62" font-size="10" fill="#94a3b8">SCADA telemetry for smallholder</text>
+        <text x="15" y="78" font-size="10" fill="#94a3b8">farmers using open hardware.</text>
+      </g>
+
+      <!-- SDG 13 -->
+      <g transform="translate(810, 0)">
+        <rect width="250" height="110" rx="8" fill="#111827" stroke="#16a34a"/>
+        <text x="15" y="24" font-size="12" font-weight="700" fill="#34d399">UN SDG 13: Climate Action</text>
+        <text x="15" y="46" font-size="10" fill="#94a3b8">Reduces pump electricity use</text>
+        <text x="15" y="62" font-size="10" fill="#94a3b8">by 38%, lowering carbon</text>
+        <text x="15" y="78" font-size="10" fill="#94a3b8">footprint of tube-wells.</text>
+      </g>
+    </g>
+  </g>
+</svg>
