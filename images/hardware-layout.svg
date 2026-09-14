@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%" style="background:#070d19; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="protoBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <text x="500" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: HARDWARE PROTOTYPE LAYOUT</text>
+  <text x="500" y="62" text-anchor="middle" font-size="12" fill="#94a3b8">Physical Bench Prototyping, Enclosure Assembly, and Terminal Block Interconnects</text>
+
+  <!-- Baseplate / DIN Mount Area -->
+  <rect x="50" y="90" width="900" height="520" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+
+  <!-- Module 1: ESP32 Dev Board on Prototyping Breadboard -->
+  <g transform="translate(370, 130)">
+    <rect width="260" height="420" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="130" y="32" text-anchor="middle" font-size="14" font-weight="700" fill="#38bdf8">ESP32 Core Board</text>
+
+    <!-- Pin Headers Callouts -->
+    <g transform="translate(20, 60)" font-size="10" fill="#cbd5e1" font-family="monospace">
+      <text x="0" y="20">• GPIO35 (Soil In)</text>
+      <text x="0" y="50">• GPIO34 (Water Level In)</text>
+      <text x="0" y="80">• GPIO4 (DHT22 Data)</text>
+      <text x="0" y="110">• GPIO5 (Relay Out)</text>
+      <text x="0" y="140">• GPIO21 (Status LED)</text>
+      <text x="0" y="170">• 5V / VIN Rail</text>
+      <text x="0" y="200">• 3V3 Sensor Rail</text>
+      <text x="0" y="230">• Common GND Bus</text>
+    </g>
+
+    <!-- USB Programming Port -->
+    <rect x="90" y="380" width="80" height="30" rx="4" fill="#334155" stroke="#64748b"/>
+    <text x="130" y="400" text-anchor="middle" font-size="10" font-weight="600" fill="#f8fafc">USB-C / Micro</text>
+  </g>
+
+  <!-- Module 2: 5V Relay & 12V Pump Interlock (Top Right) -->
+  <g transform="translate(680, 130)">
+    <rect width="240" height="190" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#fca5a5">5V Optocoupled Relay</text>
+    <rect x="25" y="45" width="85" height="65" rx="6" fill="#0284c7" stroke="#38bdf8"/>
+    <text x="67" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#f8fafc">RELAY</text>
+    <text x="25" y="130" font-size="10" fill="#cbd5e1">COM: 12V Supply Rail</text>
+    <text x="25" y="148" font-size="10" fill="#cbd5e1">NO: Pump Positive</text>
+    <text x="25" y="166" font-size="10" fill="#ef4444">IN: GPIO5 (Active Low)</text>
+  </g>
+
+  <!-- Module 3: 12V DC Pump & Reservoir (Bottom Right) -->
+  <g transform="translate(680, 360)">
+    <rect width="240" height="190" rx="10" fill="#1e293b" stroke="#06b6d4" stroke-width="1.8"/>
+    <text x="120" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#67e8f9">Submersible DC Pump</text>
+    <circle cx="120" cy="95" r="45" fill="#111827" stroke="#06b6d4" stroke-width="2"/>
+    <text x="120" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#38bdf8">12V PUMP</text>
+    <text x="25" y="160" font-size="10" fill="#cbd5e1">Discharge: Silicon 8mm Tubing</text>
+    <text x="25" y="176" font-size="10" fill="#10b981">Reservoir Safety Cutoff &gt; 20%</text>
+  </g>
+
+  <!-- Module 4: Power Step-Down Buck Converter (Top Left) -->
+  <g transform="translate(80, 130)">
+    <rect width="240" height="150" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.8"/>
+    <text x="120" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#fbbf24">Buck Step-Down (LM2596)</text>
+    <text x="20" y="58" font-size="11" fill="#cbd5e1">VIN+: 12V 2A Adapter</text>
+    <text x="20" y="80" font-size="11" fill="#38bdf8">VOUT+: Clean 5.0V DC</text>
+    <text x="20" y="102" font-size="11" fill="#cbd5e1">Common Ground Bus</text>
+    <text x="20" y="128" font-size="10" fill="#94a3b8">Multi-turn Pot Tuned to 5.05V</text>
+  </g>
+
+  <!-- Module 5: Field Sensors Array (Bottom Left) -->
+  <g transform="translate(80, 310)">
+    <rect width="240" height="240" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.8"/>
+    <text x="120" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">Field Sensor Probes</text>
+
+    <!-- Soil Sensor -->
+    <g transform="translate(15, 45)">
+      <rect width="210" height="55" rx="6" fill="#111827" stroke="#10b981"/>
+      <text x="12" y="22" font-size="11" font-weight="600" fill="#a7f3d0">Capacitive Moisture v1.2</text>
+      <text x="12" y="40" font-size="9" fill="#94a3b8">Analog Out -&gt; Jumper -&gt; GPIO35</text>
+    </g>
+
+    <!-- Water Level -->
+    <g transform="translate(15, 110)">
+      <rect width="210" height="55" rx="6" fill="#111827" stroke="#3b82f6"/>
+      <text x="12" y="22" font-size="11" font-weight="600" fill="#bfdbfe">Water Level Sensor</text>
+      <text x="12" y="40" font-size="9" fill="#94a3b8">Analog Out -&gt; Jumper -&gt; GPIO34</text>
+    </g>
+
+    <!-- DHT22 -->
+    <g transform="translate(15, 175)">
+      <rect width="210" height="55" rx="6" fill="#111827" stroke="#f59e0b"/>
+      <text x="12" y="22" font-size="11" font-weight="600" fill="#fef3c7">DHT22 Temp / Humidity</text>
+      <text x="12" y="40" font-size="9" fill="#94a3b8">Data Pin -&gt; 10kΩ -&gt; GPIO4</text>
+    </g>
+  </g>
+
+  <!-- Wiring connections -->
+  <path d="M 320 205 L 370 205" stroke="#f59e0b" stroke-width="2"/>
+  <path d="M 320 400 L 370 230" stroke="#10b981" stroke-width="2"/>
+  <path d="M 630 230 L 680 230" stroke="#ef4444" stroke-width="2"/>
+  <path d="M 800 320 L 800 360" stroke="#06b6d4" stroke-width="2"/>
+
+</svg>
