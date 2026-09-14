@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" width="100%" height="100%" style="background:#0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="swCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="sw-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+    <marker id="sw-arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: SOFTWARE EXECUTION FLOWCHART</text>
+  <text x="425" y="65" text-anchor="middle" font-size="12" fill="#94a3b8">Non-Blocking Cooperative Multi-Tasking Loop using millis() Architecture</text>
+
+  <!-- START -->
+  <g transform="translate(305, 95)">
+    <rect width="240" height="46" rx="23" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="120" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#f8fafc">System Boot / Power On</text>
+  </g>
+  <path d="M 425 141 L 425 170" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- SETUP PHASE -->
+  <g transform="translate(245, 170)">
+    <rect width="360" height="120" rx="12" fill="url(#swCard)" stroke="#475569" stroke-width="1.5"/>
+    <text x="180" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#38bdf8">void setup() Initialization</text>
+    <text x="20" y="50" font-size="11" fill="#cbd5e1">• Serial.begin(115200)</text>
+    <text x="20" y="68" font-size="11" fill="#cbd5e1">• Set GPIO PinModes (Relay HIGH/SAFE, Sensors INPUT)</text>
+    <text x="20" y="86" font-size="11" fill="#cbd5e1">• Load NVS calibration offsets (Dry/Wet ADC limits)</text>
+    <text x="20" y="104" font-size="11" fill="#cbd5e1">• Initiate Non-Blocking WiFi &amp; Blynk Connection</text>
+  </g>
+  <path d="M 425 290 L 425 330" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- LOOP ENTRY -->
+  <g transform="translate(285, 330)">
+    <rect width="280" height="44" rx="22" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+    <text x="140" y="27" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">void loop() Main Superloop</text>
+  </g>
+  <path d="M 425 374 L 425 405" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- TASK 0: BLYNK RUN -->
+  <g transform="translate(265, 405)">
+    <rect width="320" height="55" rx="10" fill="url(#swCard)" stroke="#8b5cf6" stroke-width="1.2"/>
+    <text x="160" y="24" text-anchor="middle" font-size="12" font-weight="600" fill="#c084fc">Task 0: Blynk &amp; Network Servicing</text>
+    <text x="160" y="42" text-anchor="middle" font-size="11" fill="#94a3b8">BlynkManager.run() | Process Inbound Packets</text>
+  </g>
+  <path d="M 425 460 L 425 490" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- TASK 1: SENSOR SAMPLING (TIMER) -->
+  <g transform="translate(245, 490)">
+    <rect width="360" height="85" rx="10" fill="url(#swCard)" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="180" y="24" text-anchor="middle" font-size="12" font-weight="600" fill="#38bdf8">Task 1: Sensor Sampling (every 2000 ms)</text>
+    <text x="20" y="46" font-size="11" fill="#cbd5e1">• Read ADC1_CH7 (Soil) &amp; ADC1_CH6 (Water Level)</text>
+    <text x="20" y="64" font-size="11" fill="#cbd5e1">• Update 10-Sample Moving Average Buffer</text>
+    <text x="20" y="80" font-size="11" fill="#cbd5e1">• Poll DHT22 Temperature &amp; Relative Humidity</text>
+  </g>
+  <path d="M 425 575 L 425 605" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- TASK 2: DECISION ENGINE (TIMER) -->
+  <g transform="translate(225, 605)">
+    <rect width="400" height="100" rx="10" fill="url(#swCard)" stroke="#10b981" stroke-width="1.5"/>
+    <text x="200" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">Task 2: DecisionEngine Evaluation (every 2000 ms)</text>
+    <text x="20" y="46" font-size="11" fill="#cbd5e1">• Evaluate Tank Level &gt; 20% (Dry-Run Protection)</text>
+    <text x="20" y="64" font-size="11" fill="#cbd5e1">• Check Mode: Manual Override (V1) vs Auto Hysteresis</text>
+    <text x="20" y="82" font-size="11" fill="#cbd5e1">• If Auto: Compare Moisture against 35% Dry / 65% Wet Limits</text>
+    <text x="20" y="96" font-size="10" fill="#94a3b8">• Dispatch Target Pump State to PumpController</text>
+  </g>
+  <path d="M 425 705 L 425 735" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- TASK 3: PUMP CONTROLLER & SAFETY (TIMER) -->
+  <g transform="translate(235, 735)">
+    <rect width="380" height="85" rx="10" fill="url(#swCard)" stroke="#ef4444" stroke-width="1.2"/>
+    <text x="190" y="24" text-anchor="middle" font-size="12" font-weight="600" fill="#f87171">Task 3: PumpController Safety Watchdog</text>
+    <text x="20" y="46" font-size="11" fill="#cbd5e1">• Execute Physical Relay Pin Toggle (GPIO5)</text>
+    <text x="20" y="64" font-size="11" fill="#cbd5e1">• Check Max Continuous Runtime Watchdog (&gt; 300s Cutoff)</text>
+    <text x="20" y="80" font-size="11" fill="#cbd5e1">• Enforce Minimum Cycle Cooldown (Anti-chatter)</text>
+  </g>
+  <path d="M 425 820 L 425 850" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- TASK 4: TELEMETRY DISPATCH (TIMER) -->
+  <g transform="translate(255, 850)">
+    <rect width="340" height="75" rx="10" fill="url(#swCard)" stroke="#06b6d4" stroke-width="1.2"/>
+    <text x="170" y="24" text-anchor="middle" font-size="12" font-weight="600" fill="#22d3ee">Task 4: Cloud Telemetry Push (every 1000 ms)</text>
+    <text x="20" y="46" font-size="11" fill="#cbd5e1">• Update Blynk Virtual Pins: V0, V2, V3, V4, V5</text>
+    <text x="20" y="64" font-size="11" fill="#cbd5e1">• Push Status Logs &amp; Event Alarms to App</text>
+  </g>
+  <path d="M 425 925 L 425 955" stroke="#38bdf8" stroke-width="2" marker-end="url(#sw-arrow)"/>
+
+  <!-- TASK 5: LED & WIFI RECONNECT -->
+  <g transform="translate(255, 955)">
+    <rect width="340" height="65" rx="10" fill="url(#swCard)" stroke="#a855f7" stroke-width="1.2"/>
+    <text x="170" y="24" text-anchor="middle" font-size="12" font-weight="600" fill="#c084fc">Task 5: LED Heartbeat &amp; Network Health</text>
+    <text x="20" y="46" font-size="11" fill="#cbd5e1">• Pulse Visual RGB Indicator (GPIO21)</text>
+    <text x="20" y="60" font-size="10" fill="#94a3b8">• Background Auto-Reconnect Check (Exponential Backoff)</text>
+  </g>
+
+  <!-- LOOP BACK -->
+  <path d="M 425 1020 L 425 1050 L 120 1050 L 120 352 L 285 352" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#sw-arrow-green)"/>
+  <text x="130" y="700" font-size="11" font-weight="600" fill="#34d399" transform="rotate(-90 130 700)">Repeat Cooperative Loop (0ms Idle Blocking)</text>
+
+</svg>
