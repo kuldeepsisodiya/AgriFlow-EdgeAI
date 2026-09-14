@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%" style="background:#070d19; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070d19"/>
+      <stop offset="50%" stop-color="#0b1727"/>
+      <stop offset="100%" stop-color="#051a14"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="heroGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Circuit Trace Background Lines -->
+  <g stroke="#10b981" stroke-width="1.2" opacity="0.18" fill="none">
+    <path d="M 0 100 L 250 100 L 320 170 L 600 170 L 650 120 L 900 120 L 950 170 L 1200 170"/>
+    <path d="M 0 250 L 180 250 L 240 190 L 500 190 L 560 250 L 850 250 L 920 180 L 1200 180"/>
+    <path d="M 150 0 L 150 120 L 220 190 L 220 400"/>
+    <path d="M 1050 0 L 1050 150 L 980 220 L 980 400"/>
+    <circle cx="250" cy="100" r="4" fill="#10b981"/>
+    <circle cx="320" cy="170" r="4" fill="#38bdf8"/>
+    <circle cx="650" cy="120" r="4" fill="#10b981"/>
+    <circle cx="950" cy="170" r="4" fill="#38bdf8"/>
+    <circle cx="180" cy="250" r="4" fill="#10b981"/>
+    <circle cx="560" cy="250" r="4" fill="#38bdf8"/>
+  </g>
+
+  <!-- Glowing Leaf / Microchip Emblem -->
+  <g transform="translate(60, 95)" filter="url(#heroGlow)">
+    <rect width="110" height="110" rx="24" fill="#0f172a" stroke="#10b981" stroke-width="2.5"/>
+    <!-- Stylized Leaf & Circuit Icon -->
+    <path d="M 55 25 C 75 25 90 40 90 60 C 90 85 55 95 55 95 C 55 95 20 85 20 60 C 20 40 35 25 55 25 Z" fill="none" stroke="#34d399" stroke-width="3"/>
+    <line x1="55" y1="35" x2="55" y2="85" stroke="#34d399" stroke-width="2.5"/>
+    <line x1="55" y1="50" x2="72" y2="40" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="55" y1="65" x2="38" y2="55" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="72" cy="40" r="3" fill="#38bdf8"/>
+    <circle cx="38" cy="55" r="3" fill="#38bdf8"/>
+  </g>
+
+  <!-- Main Titles -->
+  <text x="195" y="145" font-size="46" font-weight="900" fill="url(#textGrad)" letter-spacing="0.5">AgriFlow-EdgeAI</text>
+  <text x="198" y="185" font-size="18" font-weight="600" fill="#e2e8f0" letter-spacing="0.5">Next-Gen Edge-AI Smart Irrigation &amp; Micro-Climate Telemetry System</text>
+  <text x="198" y="215" font-size="13" font-weight="400" fill="#94a3b8">Autonomous Closed-Loop Hydration • ESP32 Multi-Tasking • Capacitive VWC Sensing • Blynk Cloud 2.0</text>
+
+  <!-- Engineering Badges Row -->
+  <g transform="translate(60, 270)">
+    <!-- Badge 1: Platform -->
+    <g transform="translate(0, 0)">
+      <rect width="180" height="38" rx="8" fill="url(#badgeGrad)" stroke="#10b981" stroke-width="1.2"/>
+      <circle cx="20" cy="19" r="5" fill="#10b981"/>
+      <text x="35" y="24" font-size="11" font-weight="700" fill="#f1f5f9">ESP32-WROOM-32</text>
+    </g>
+
+    <!-- Badge 2: Architecture -->
+    <g transform="translate(195, 0)">
+      <rect width="200" height="38" rx="8" fill="url(#badgeGrad)" stroke="#38bdf8" stroke-width="1.2"/>
+      <circle cx="20" cy="19" r="5" fill="#38bdf8"/>
+      <text x="35" y="24" font-size="11" font-weight="700" fill="#f1f5f9">Modular C++ (millis loop)</text>
+    </g>
+
+    <!-- Badge 3: Cloud -->
+    <g transform="translate(410, 0)">
+      <rect width="180" height="38" rx="8" fill="url(#badgeGrad)" stroke="#8b5cf6" stroke-width="1.2"/>
+      <circle cx="20" cy="19" r="5" fill="#8b5cf6"/>
+      <text x="35" y="24" font-size="11" font-weight="700" fill="#f1f5f9">Blynk IoT 2.0 Cloud</text>
+    </g>
+
+    <!-- Badge 4: Edge-AI -->
+    <g transform="translate(605, 0)">
+      <rect width="180" height="38" rx="8" fill="url(#badgeGrad)" stroke="#f59e0b" stroke-width="1.2"/>
+      <circle cx="20" cy="19" r="5" fill="#f59e0b"/>
+      <text x="35" y="24" font-size="11" font-weight="700" fill="#f1f5f9">TinyML Roadmap</text>
+    </g>
+
+    <!-- Badge 5: Academic -->
+    <g transform="translate(800, 0)">
+      <rect width="280" height="38" rx="8" fill="url(#badgeGrad)" stroke="#06b6d4" stroke-width="1.2"/>
+      <circle cx="20" cy="19" r="5" fill="#06b6d4"/>
+      <text x="35" y="24" font-size="11" font-weight="700" fill="#f1f5f9">SIH &amp; Engineering Minor Project</text>
+    </g>
+  </g>
+
+  <!-- Metrics Highlight Strip (Bottom) -->
+  <line x1="60" y1="340" x2="1140" y2="340" stroke="#334155"/>
+  <g transform="translate(60, 375)" font-size="12" fill="#94a3b8">
+    <text x="0" y="0"><tspan font-weight="700" fill="#10b981">42%</tspan> Water Savings vs Timer Irrigation</text>
+    <text x="320" y="0"><tspan font-weight="700" fill="#38bdf8">&lt; 50ms</tspan> Edge Fail-Safe Cutoff Response</text>
+    <text x="650" y="0"><tspan font-weight="700" fill="#8b5cf6">100%</tspan> Offline Resilient Autonomous Operation</text>
+    <text x="960" y="0"><tspan font-weight="700" fill="#f59e0b">0%</tspan> Blocking Delay In Superloop</text>
+  </g>
+</svg>
