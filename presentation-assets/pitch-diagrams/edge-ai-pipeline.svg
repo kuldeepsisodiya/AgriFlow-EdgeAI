@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%" style="background:#070d19; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="aiCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="ai-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#a855f7" />
+    </marker>
+  </defs>
+
+  <text x="500" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: TINYML ON-DEVICE INFERENCE PIPELINE</text>
+  <text x="500" y="60" text-anchor="middle" font-size="12" fill="#94a3b8">Future AI Roadmap: TensorFlow Lite for Microcontrollers (TFLite Micro) on ESP32</text>
+
+  <!-- Step 1: Ingest -->
+  <g transform="translate(40, 100)">
+    <rect width="200" height="340" rx="12" fill="url(#aiCard)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="100" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#38bdf8">1. Multi-Modal Ingest</text>
+    <g transform="translate(15, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="600" fill="#f8fafc">Input Tensors:</text>
+      <text x="0" y="45">• Soil Moisture VWC (%)</text>
+      <text x="0" y="70">• Ambient Temp (°C)</text>
+      <text x="0" y="95">• Relative Humidity (%)</text>
+      <text x="0" y="120">• Solar Irradiance (Lux)</text>
+      <text x="0" y="145">• Historic Depletion Rate</text>
+      <line x1="0" y1="165" x2="170" y2="165" stroke="#334155"/>
+      <text x="0" y="190" font-size="10" fill="#94a3b8">Sample Freq: 0.1 Hz</text>
+      <text x="0" y="210" font-size="10" fill="#94a3b8">Ring Buffer: 60 min</text>
+    </g>
+  </g>
+  <path d="M 240 270 L 275 270" stroke="#a855f7" stroke-width="2" marker-end="url(#ai-arrow)"/>
+
+  <!-- Step 2: Feature Engineering -->
+  <g transform="translate(275, 100)">
+    <rect width="200" height="340" rx="12" fill="url(#aiCard)" stroke="#10b981" stroke-width="1.5"/>
+    <text x="100" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">2. Edge Features</text>
+    <g transform="translate(15, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="600" fill="#f8fafc">Feature Transforms:</text>
+      <text x="0" y="45">• Vapor Pressure Deficit</text>
+      <text x="0" y="65" font-size="10" fill="#10b981">VPD = Es - Ea (kPa)</text>
+      <text x="0" y="95">• d(Moisture)/dt slope</text>
+      <text x="0" y="120">• Diurnal Thermal Index</text>
+      <text x="0" y="145">• Normalized Saturation</text>
+      <line x1="0" y1="165" x2="170" y2="165" stroke="#334155"/>
+      <text x="0" y="190" font-size="10" fill="#94a3b8">Integer INT8 Scaler</text>
+      <text x="0" y="210" font-size="10" fill="#94a3b8">Zero Dynamic Alloc</text>
+    </g>
+  </g>
+  <path d="M 475 270 L 510 270" stroke="#a855f7" stroke-width="2" marker-end="url(#ai-arrow)"/>
+
+  <!-- Step 3: TFLite Micro Quantized Model -->
+  <g transform="translate(510, 100)">
+    <rect width="210" height="340" rx="12" fill="url(#aiCard)" stroke="#a855f7" stroke-width="2"/>
+    <text x="105" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#c084fc">3. TFLite Micro Engine</text>
+    <g transform="translate(15, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="600" fill="#f8fafc">Embedded Model:</text>
+      <text x="0" y="45">• 1D CNN / Dense Net</text>
+      <text x="0" y="70">• Quantization: INT8</text>
+      <text x="0" y="95">• Model Footprint: 24 KB</text>
+      <text x="0" y="120">• RAM Arena: 12 KB</text>
+      <text x="0" y="145">• Latency: 14 ms / pass</text>
+      <line x1="0" y1="165" x2="180" y2="165" stroke="#334155"/>
+      <text x="0" y="190" font-size="10" fill="#a855f7">Xtensa LX6 Optimized</text>
+      <text x="0" y="210" font-size="10" fill="#a855f7">Flash Constant Array</text>
+    </g>
+  </g>
+  <path d="M 720 270 L 755 270" stroke="#a855f7" stroke-width="2" marker-end="url(#ai-arrow)"/>
+
+  <!-- Step 4: Predictive Actuation -->
+  <g transform="translate(755, 100)">
+    <rect width="205" height="340" rx="12" fill="url(#aiCard)" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="102" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#fbbf24">4. Predictive Control</text>
+    <g transform="translate(15, 60)" font-size="11" fill="#cbd5e1">
+      <text x="0" y="20" font-weight="600" fill="#f8fafc">Action Outputs:</text>
+      <text x="0" y="45">• Forecasted ET0 (mm/h)</text>
+      <text x="0" y="70">• Optimal Water Dose (mL)</text>
+      <text x="0" y="95">• Delayed Irrigate Window</text>
+      <text x="0" y="115" font-size="10" fill="#fbbf24">(Wait for evening cool)</text>
+      <text x="0" y="145">• Prevent Mid-Day Burn</text>
+      <line x1="0" y1="165" x2="175" y2="165" stroke="#334155"/>
+      <text x="0" y="190" font-size="10" fill="#10b981">+18% Efficiency Gain</text>
+      <text x="0" y="210" font-size="10" fill="#10b981">Over Static Hysteresis</text>
+    </g>
+  </g>
+</svg>
