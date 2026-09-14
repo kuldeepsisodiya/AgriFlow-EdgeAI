@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%" style="background:#0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="blueCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="greenState" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="redState" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#450a0a"/>
+      <stop offset="100%" stop-color="#2a0505"/>
+    </linearGradient>
+    <linearGradient id="purpleState" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b0764"/>
+      <stop offset="100%" stop-color="#240742"/>
+    </linearGradient>
+    <marker id="sm-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8" />
+    </marker>
+    <marker id="sm-arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981" />
+    </marker>
+    <marker id="sm-arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444" />
+    </marker>
+    <marker id="sm-arrow-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f59e0b" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="1">AGRIFLOW-EDGEAI: FINITE STATE MACHINE (FSM)</text>
+  <text x="500" y="70" text-anchor="middle" font-size="12" fill="#94a3b8">Deterministic Embedded Operational States &amp; Fault Recovery Transitions</text>
+
+  <!-- STATE 1: BOOT & HARDWARE INIT -->
+  <g transform="translate(60, 120)">
+    <rect width="220" height="90" rx="12" fill="url(#blueCard)" stroke="#38bdf8" stroke-width="2"/>
+    <rect width="220" height="28" rx="12" fill="#1e293b"/>
+    <rect y="16" width="220" height="12" fill="#1e293b"/>
+    <text x="110" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#38bdf8">STATE: BOOT_INIT</text>
+    <text x="15" y="48" font-size="11" fill="#cbd5e1">• Pin config &amp; failsafe pullups</text>
+    <text x="15" y="65" font-size="11" fill="#cbd5e1">• Load NVS calibration offsets</text>
+    <text x="15" y="82" font-size="11" fill="#94a3b8">• Relay initialized to SAFE (OFF)</text>
+  </g>
+
+  <!-- Transition: Boot -> WiFi -->
+  <path d="M 280 165 L 370 165" stroke="#38bdf8" stroke-width="2" marker-end="url(#sm-arrow)"/>
+  <text x="325" y="155" text-anchor="middle" font-size="10" fill="#38bdf8">Init Complete</text>
+
+  <!-- STATE 2: WIFI CONNECT -->
+  <g transform="translate(370, 120)">
+    <rect width="240" height="90" rx="12" fill="url(#blueCard)" stroke="#3b82f6" stroke-width="2"/>
+    <rect width="240" height="28" rx="12" fill="#1e293b"/>
+    <rect y="16" width="240" height="12" fill="#1e293b"/>
+    <text x="120" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#60a5fa">STATE: WIFI_CONNECT</text>
+    <text x="15" y="48" font-size="11" fill="#cbd5e1">• Async handshake w/ Blynk</text>
+    <text x="15" y="65" font-size="11" fill="#cbd5e1">• Non-blocking retry backoff</text>
+    <text x="15" y="82" font-size="10" fill="#f59e0b">• If offline: Fallback to local mode</text>
+  </g>
+
+  <!-- Transition: WiFi -> Idle -->
+  <path d="M 610 165 L 720 165" stroke="#10b981" stroke-width="2" marker-end="url(#sm-arrow-green)"/>
+  <text x="665" y="155" text-anchor="middle" font-size="10" fill="#10b981">Ready / Fallback</text>
+
+  <!-- STATE 3: MONITORING / IDLE (CENTRAL) -->
+  <g transform="translate(720, 110)">
+    <rect width="240" height="110" rx="12" fill="url(#blueCard)" stroke="#10b981" stroke-width="2.5"/>
+    <rect width="240" height="28" rx="12" fill="#1e293b"/>
+    <rect y="16" width="240" height="12" fill="#1e293b"/>
+    <text x="120" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">STATE: MONITORING_IDLE</text>
+    <text x="15" y="48" font-size="11" fill="#cbd5e1">• Sample sensors (2000 ms)</text>
+    <text x="15" y="65" font-size="11" fill="#cbd5e1">• Sliding-window filter compute</text>
+    <text x="15" y="82" font-size="11" fill="#cbd5e1">• Stream V-Pin telemetry</text>
+    <text x="15" y="99" font-size="10" fill="#94a3b8">• Pump: INACTIVE (LED: Green)</text>
+  </g>
+
+  <!-- Transition: Idle -> Auto Watering -->
+  <path d="M 840 220 L 840 330" stroke="#10b981" stroke-width="2" marker-end="url(#sm-arrow-green)"/>
+  <text x="845" y="275" font-size="10" fill="#34d399">Soil &lt; 35% &amp;&amp; Tank &gt; 20%</text>
+
+  <!-- STATE 4: AUTO WATERING -->
+  <g transform="translate(720, 330)">
+    <rect width="240" height="100" rx="12" fill="url(#greenState)" stroke="#10b981" stroke-width="2"/>
+    <rect width="240" height="28" rx="12" fill="#064e3b"/>
+    <rect y="16" width="240" height="12" fill="#064e3b"/>
+    <text x="120" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#a7f3d0">STATE: AUTO_WATERING</text>
+    <text x="15" y="48" font-size="11" fill="#e2e8f0">• Relay ON (GPIO5 LOW)</text>
+    <text x="15" y="65" font-size="11" fill="#e2e8f0">• Monitor runtime watchdog</text>
+    <text x="15" y="82" font-size="11" fill="#e2e8f0">• Target: Soil Moisture &gt; 65%</text>
+    <text x="15" y="95" font-size="10" fill="#6ee7b7">• Status LED: Pulsing Yellow</text>
+  </g>
+
+  <!-- Transition: Auto Watering -> Idle -->
+  <path d="M 760 330 L 760 220" stroke="#38bdf8" stroke-width="2" marker-end="url(#sm-arrow)"/>
+  <text x="660" y="280" font-size="10" fill="#38bdf8">Moisture &gt; 65% || Run &gt; 300s</text>
+
+  <!-- Transition: Idle -> Manual Watering -->
+  <path d="M 720 190 L 580 340" stroke="#8b5cf6" stroke-width="2" marker-end="url(#sm-arrow)"/>
+  <text x="600" y="245" font-size="10" fill="#c084fc">User Override ON (V1)</text>
+
+  <!-- STATE 5: MANUAL WATERING -->
+  <g transform="translate(420, 340)">
+    <rect width="230" height="95" rx="12" fill="url(#purpleState)" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="230" height="28" rx="12" fill="#2e1065"/>
+    <rect y="16" width="230" height="12" fill="#2e1065"/>
+    <text x="115" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#c084fc">STATE: MANUAL_OVERRIDE</text>
+    <text x="15" y="48" font-size="11" fill="#e2e8f0">• Direct User Command Active</text>
+    <text x="15" y="65" font-size="11" fill="#e2e8f0">• Tank interlock enforced</text>
+    <text x="15" y="82" font-size="10" fill="#f59e0b">• Safety timeout (180s hard limit)</text>
+  </g>
+
+  <!-- Transition: Manual -> Idle -->
+  <path d="M 520 340 L 720 180" stroke="#38bdf8" stroke-width="2" marker-end="url(#sm-arrow)"/>
+  <text x="470" y="235" font-size="10" fill="#38bdf8">User OFF || Timeout</text>
+
+  <!-- FAULT STATE 6: TANK EMPTY LOCKED -->
+  <g transform="translate(100, 480)">
+    <rect width="240" height="105" rx="12" fill="url(#redState)" stroke="#ef4444" stroke-width="2"/>
+    <rect width="240" height="28" rx="12" fill="#450a0a"/>
+    <rect y="16" width="240" height="12" fill="#450a0a"/>
+    <text x="120" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#fca5a5">STATE: TANK_EMPTY_LOCKED</text>
+    <text x="15" y="48" font-size="11" fill="#fee2e2">• Pump LOCKED OFF (Anti-burn)</text>
+    <text x="15" y="65" font-size="11" fill="#fee2e2">• Alarm push notification sent</text>
+    <text x="15" y="82" font-size="11" fill="#fee2e2">• Auto-clears when Tank &gt; 25%</text>
+    <text x="15" y="98" font-size="10" fill="#f87171">• Status LED: Fast Red Blink</text>
+  </g>
+
+  <!-- Transition: Auto / Idle to Tank Empty -->
+  <path d="M 720 380 L 340 510" stroke="#ef4444" stroke-width="2" marker-end="url(#sm-arrow-red)"/>
+  <text x="470" y="460" font-size="10" fill="#f87171">Water Level &lt; 20% (Emergency Trip)</text>
+
+  <!-- Transition: Tank Refilled back to Idle -->
+  <path d="M 220 480 L 220 310 L 720 200" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#sm-arrow-green)"/>
+  <text x="230" y="290" font-size="10" fill="#34d399">Reservoir Refilled &gt; 25%</text>
+
+  <!-- FAULT STATE 7: SENSOR FAULT FAILSAFE -->
+  <g transform="translate(560, 490)">
+    <rect width="240" height="100" rx="12" fill="url(#redState)" stroke="#f59e0b" stroke-width="2"/>
+    <rect width="240" height="28" rx="12" fill="#451a03"/>
+    <rect y="16" width="240" height="12" fill="#451a03"/>
+    <text x="120" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#fcd34d">STATE: SENSOR_FAILSAFE</text>
+    <text x="15" y="48" font-size="11" fill="#fef3c7">• Disconnect / Out-of-Bounds</text>
+    <text x="15" y="65" font-size="11" fill="#fef3c7">• Suppress automated pumping</text>
+    <text x="15" y="82" font-size="11" fill="#fef3c7">• Alert dispatched via Blynk</text>
+    <text x="15" y="95" font-size="10" fill="#fbbf24">• Status LED: Solid Orange</text>
+  </g>
+
+  <!-- Transition: Idle to Sensor Fault -->
+  <path d="M 820 220 L 700 490" stroke="#f59e0b" stroke-width="2" marker-end="url(#sm-arrow-amber)"/>
+  <text x="760" y="320" font-size="10" fill="#fbbf24">ADC Reading Invalid</text>
+
+</svg>
